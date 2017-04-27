@@ -2,6 +2,7 @@
 *.tmp
 *.pyc
 *.o
+*.swp
 
 /.dots.git
 /.local/include

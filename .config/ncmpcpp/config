@@ -2,18 +2,17 @@
 # Ncmpcpp configuration
 #
 
-ncmpcpp_directory = /home/jaagr/.config/ncmpcpp
+ncmpcpp_directory = $HOME/.config/ncmpcpp
 
-# MPD connection settings {{{
+# MPD connection settings
 
 mpd_host = localhost
 mpd_port = 6600
-mpd_music_dir = /home/jaagr/var/media/music
 mpd_connection_timeout = 5
 mpd_crossfade_time = 3
 
-# }}}
-# Music visualizer {{{
+
+# Music visualizer
 
 visualizer_fifo_path = /tmp/mpd_visualizer.fifo
 visualizer_output_name = Visualizer FIFO
@@ -25,14 +24,14 @@ visualizer_type = spectrum
 visualizer_look = ●▮
 visualizer_color = red
 
-# }}}
-# Delays {{{
+
+# Delays
 
 playlist_disable_highlight_delay = 5
 message_delay_time = 4
 
-# }}}
-# Song format {{{
+
+# Song format
 
 # Available placeholders for song formats:
 # %l - length
@@ -102,8 +101,8 @@ song_list_format = {$5 %a$9 $1│$9 $8%t$9 }|{ $8%f$9}$R{$5%b $7}
 #song_list_format = $8[$9$8%b$8]$9 $8|$9 $8%a$9 $8|$9 $8%t$9 $R [%l]
 #song_list_format = {$8$9}{[%l] >> }{%t }$R{%a - %b}
 
-#song_status_format = {{{$1%a$9}} $1◦$9 {$1%t$9}|{$1%f$9}{ $1◦$9 $1%b$9{ $1◦$9 $1%y$9}}}
-song_status_format = {{{$3%a$9}} $8◦$9 {$8%t$9}|{$8%f$9}{ $8◦$9 $6%b$9{ $8◦$9 $7%y$9}}}
+#song_status_format = $1%a$9}} $1◦$9 {$1%t$9}|{$1%f$9}{ $1◦$9 $1%b$9{ $1◦$9 $1%y$9
+song_status_format = $3%a$9}} $8◦$9 {$8%t$9}|{$8%f$9}{ $8◦$9 $6%b$9{ $8◦$9 $7%y$9
 
 song_library_format = {%n $8◦$9 }{%t}|{%f}
 
@@ -127,8 +126,8 @@ song_window_title_format = {%t}|{%f} - {%a}
 #browser_sort_mode = name
 #browser_sort_format = {%a - }{%t}|{%f} {(%l)}
 
-# }}}
-# Columns settings {{{
+
+# Columns settings
 
 # Syntax of song columns list format is "column column etc."
 #
@@ -168,8 +167,8 @@ song_columns_list_format = (1f)[red]{} (40)[red]{t|f} (25)[yellow]{a} (25)[green
 #song_columns_list_format = (40)[red]{a} (40)[blue]{t} (20)[magenta]{b}
 #song_columns_list_format = $L(9)[white]{l} (20)[red]{t} (30)$R(20)[green]{a}[cyan]{b}
 
-# }}}
-# Various settings {{{
+
+# Various settings
 
 #execute_on_song_change = "$HOME/.ncmpcpp/broadcast"
 
@@ -262,15 +261,15 @@ allow_for_physical_item_deletion = no
 #    in database and local one for searching in current playlist)
 search_engine_default_search_mode = 2
 
-# }}}
-# Progressbar {{{
+
+# Progressbar
 
 progressbar_color = black
 progressbar_boldness = yes
 progressbar_look = "─╼╌"
 
-# }}}
-# Lyrics support {{{
+
+# Lyrics support
 
 lyrics_directory = ~/.lyrics
 store_lyrics_in_song_dir = no
@@ -281,8 +280,8 @@ use_console_editor = yes
 follow_now_playing_lyrics = yes
 lastfm_preferred_language = en
 
-# }}}
-# Colors definitions {{{
+
+# Colors definitions
 
 colors_enabled = yes
 color1 = default
@@ -300,4 +299,4 @@ statusbar_color = blue
 volume_color = black
 window_border_color = blue
 
-# }}}
+

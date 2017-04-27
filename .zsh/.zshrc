@@ -9,8 +9,6 @@ if [[ "$ZSH_DEBUG" ]]; then
   setopt xtrace prompt_subst
 fi
 
-setopt sunkeyboardhack
-
 fpath=(
   $ZDOTDIR/functions
   $ZDOTDIR/compdef
@@ -22,7 +20,7 @@ for rc in $ZDOTDIR/zshrc.d/*; do
 done
 unset rc
 
-prompt jaagr
+prompt sorin
 
 if [[ "$ZSH_DEBUG" ]]; then
   unsetopt xtrace

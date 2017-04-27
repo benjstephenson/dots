@@ -29,7 +29,7 @@ cursor_shape = block
 ;font = Terminus 8
 ;font = Dina,11
 ;font = tewi 9
-;font = Hack 10
+font = Hack 12
 ;font = GohuFont,Regular,10
 ;font = Literation Mono 11
 ;font = CamingoCode,Bold 11
@@ -48,8 +48,8 @@ cursor_shape = block
 ;font = envypn, regular, 10
 ;font = Inconsolata for Powerline, Regular 10
 ;font = Roboto Mono for Powerline, 8
-font = termsyn, 9
-font = envypn, regular, 10
+;font = termsyn, 9
+;font = envypn, regular, 10
 
 [colors]
 
