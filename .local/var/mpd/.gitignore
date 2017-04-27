@@ -1,7 +1,0 @@
-playlists/*
-!playlists/.gitkeep
-database
-log
-pid
-state
-sticker.sql

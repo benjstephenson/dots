@@ -1,7 +1,0 @@
-logs/*
-!logs/
-!logs/.gitkeep
-*.log
-*.bak
-*.tmp
-_windowlist

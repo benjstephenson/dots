@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-cd "$HOME/.vimperator" || exit 1
-exec firefox -vimperator "++cmd 'source $HOME/.vimperator/vimperatorrc'" "$@"
