@@ -2,13 +2,13 @@
 # Prezto options.
 #
 
-# General {{{
+# General
 
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 
-# }}}
-# Modules {{{
+
+# Modules
 
 # Set the Zsh modules to load (man zshmodules).
 # zstyle ':prezto:load' zmodule 'attr' 'stat'
@@ -29,14 +29,22 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'history' \
   'git' \
+	'autosuggestions' \
   'syntax-highlighting' \
   'completion' \
   'fasd' \
   'tmux' \
   'prompt'
 
-# }}}
-# Editor {{{
+#
+# Autosuggestions
+#
+
+# Set the query found color.
+ zstyle ':prezto:module:autosuggestions:color' found ''
+
+
+# Editor
 
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'vi'
@@ -44,22 +52,22 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 
-# }}}
-# Git {{{
+
+# Git
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
 zstyle ':prezto:module:git:log:oneline' format \
   '%Cred%h%Creset -%C(yellow)%d%Creset %s %C(dim white)(%an)%Creset %Cgreen(%cr)%Creset'
 
-# }}}
-# GNU Utility {{{
+
+# GNU Utility
 
 # Set the command prefix on non-GNU systems.
 # zstyle ':prezto:module:gnu-utility' prefix 'g'
 
-# }}}
-# History Substring Search {{{
+
+# History Substring Search
 
 # Set the query found color.
 # zstyle ':prezto:module:history-substring-search:color' found ''
@@ -70,28 +78,28 @@ zstyle ':prezto:module:git:log:oneline' format \
 # Set the search globbing flags.
 # zstyle ':prezto:module:history-substring-search' globbing-flags ''
 
-# }}}
-# Pacman {{{
+
+# Pacman
 
 # Set the Pacman frontend.
 # zstyle ':prezto:module:pacman' frontend 'cower'
 
-# }}}
-# Prompt {{{
+
+# Prompt
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'jaagr'
+zstyle ':prezto:module:prompt' theme 'sorin'
 
-# }}}
-# SSH {{{
+
+# SSH
 
 # Set the SSH identities to load into the agent.
 # zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_rsa2' 'id_github'
 
-# }}}
-# Syntax Highlighting {{{
+
+# Syntax Highlighting
 
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
@@ -108,8 +116,8 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 #   'command' 'bg=blue' \
 #   'function' 'bg=blue'
 
-# }}}
-# Terminal {{{
+
+# Terminal
 
 # Auto set the tab and window titles.
 # zstyle ':prezto:module:terminal' auto-title 'yes'
@@ -120,8 +128,8 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 # Set the tab title format.
 # zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
-# }}}
-# Tmux {{{
+
+# Tmux
 
 # Auto start a session when Zsh is launched in a local terminal.
 #zstyle ':prezto:module:tmux:auto-start' local 'yes'
@@ -129,8 +137,8 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 # Auto start a session when Zsh is launched in a SSH connection.
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
-# }}}
-# Fasd {{{
+
+# Fasd
 
 alias a='fasd -a'        # any
 alias s='fasd -si'       # show / search / select
@@ -149,6 +157,6 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 alias v='fasd -f -e vim'
 alias vv='fasd -f -i -e vim'
 
-# }}}
+
 
 # vim:ft=zsh fdm=marker

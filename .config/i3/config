@@ -13,6 +13,7 @@
 
 # Special mod key
 set $mod Mod4
+set $terminal termite
 
 # Workspaces
 set $ws1 1
@@ -73,8 +74,8 @@ gaps outer 0
 
 # windows pop-ups
 for_window [window_role="pop-up"] floating enable,move absolute center
-for_window [class="Terminator" id=14684617 instance="terminator" title="Terminator Preferences"] floating enable,move absolute center
-for_window [class="Enpass-Desktop" id=23068701 instance="Enpass" title="Enpass"] floating,move absolute center
+for_window [class="Terminator" instance="terminator" title="Terminator Preferences"] floating enable,move absolute center
+for_window [class="Enpass-Desktop" instance="Enpass" title="Enpass"] floating,move absolute center
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -147,7 +148,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec $terminal
 
 # Start dmenu (a program launcher)
 bindsym $mod+d exec ~/bin/myrofi
