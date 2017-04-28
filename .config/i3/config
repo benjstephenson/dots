@@ -11,8 +11,25 @@
 # blueman-applet
 # bitlbee
 
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:DejaVu Sans Mono 10
+
+#colors:                border  backgr. text    indicator
+client.focused          #9f78e1 #9f78e1 #ffffff #2b2b2b
+client.focused_inactive #9f78e1 #2b2b2b #ffffff #2b2b2b
+client.unfocused        #9f78e1 #2b2b2b #ffffff #2b2b2b
+client.urgent           #900000 #900000 #ffffff #2b2b2b
+
+client.background       #ffffff
+
+
 # Special mod key
 set $mod Mod4
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 set $terminal termite
 
 # Workspaces
@@ -57,14 +74,6 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 assign [class="chromium"] $ws2
 assign [class="Firefox"] $ws2
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 10
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
 
 # Windows
 new_window pixel 3
@@ -76,6 +85,7 @@ gaps outer 0
 for_window [window_role="pop-up"] floating enable,move absolute center
 for_window [class="Terminator" instance="terminator" title="Terminator Preferences"] floating enable,move absolute center
 for_window [class="Enpass-Desktop" instance="Enpass" title="Enpass"] floating,move absolute center
+for_window [class="Blueman-manager" instance="blueman-manager" title="Bluetooth Devices"] floating enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
