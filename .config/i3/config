@@ -204,7 +204,9 @@ mode "$mode_system" {
 bindsym $mod+Control+l mode "$mode_system"
 
 # Autostarts
- exec_always $HOME/.config/polybar/launch.sh
+exec_always $HOME/.screenlayout/workmonitors.sh
+exec_always $HOME/.config/polybar/launch.sh
+exec_always xrdb -load $HOME/.Xresources
 exec --no-startup-id unclutter -idle 2
 #exec --no-startup-id dunst -config ~/.config/i3/dunstrc
 #exec --no-startup-id feh --bg-scale ~/Pictures/cartoonConsole.jpg
