@@ -75,3 +75,8 @@ unset -f path_prepend
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin"
 export MANPATH="$MANPATH:/usr/local/share/man:/usr/share/man"
+
+# Onetime setup
+source $HOME/.contract/init.sh
+eval `keychain --eval --agents ssh id_rsa`
+source "$HOME/.sdkman/bin/sdkman-init.sh"

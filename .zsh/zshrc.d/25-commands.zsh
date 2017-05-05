@@ -1,3 +1,7 @@
+function set-term-name {
+echo -e "\e]0;$1\a"
+}
+
 function unicode {
   printf "%b\n" "\U$(printf "%6s\n" "$1" | tr ' ' 0)"
 }

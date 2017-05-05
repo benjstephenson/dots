@@ -28,7 +28,4 @@ if [[ "$ZSH_DEBUG" ]]; then
 fi
 
 
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-eval `keychain --eval --agents ssh id_rsa`
-
 # vim:fdm=marker
