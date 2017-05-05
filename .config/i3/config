@@ -78,7 +78,7 @@ assign [class="Firefox"] $ws2
 # Windows
 new_window pixel 3
 new_float pixel 1
-gaps inner 10
+gaps inner 5
 gaps outer 0
 
 # windows pop-ups

@@ -2,7 +2,7 @@
 # Ncmpcpp configuration
 #
 
-ncmpcpp_directory = $HOME/.config/ncmpcpp
+ncmpcpp_directory = /home/bste/.config/ncmpcpp
 
 # MPD connection settings
 
@@ -102,7 +102,7 @@ song_list_format = {$5 %a$9 $1│$9 $8%t$9 }|{ $8%f$9}$R{$5%b $7}
 #song_list_format = {$8$9}{[%l] >> }{%t }$R{%a - %b}
 
 #song_status_format = $1%a$9}} $1◦$9 {$1%t$9}|{$1%f$9}{ $1◦$9 $1%b$9{ $1◦$9 $1%y$9
-song_status_format = $3%a$9}} $8◦$9 {$8%t$9}|{$8%f$9}{ $8◦$9 $6%b$9{ $8◦$9 $7%y$9
+#song_status_format = $3%a$9}} $8◦$9 {$8%t$9}|{$8%f$9}{ $8◦$9 $6%b$9{ $8◦$9 $7%y$9
 
 song_library_format = {%n $8◦$9 }{%t}|{%f}
 
@@ -271,14 +271,14 @@ progressbar_look = "─╼╌"
 
 # Lyrics support
 
-lyrics_directory = ~/.lyrics
-store_lyrics_in_song_dir = no
-generate_win32_compatible_filenames = yes
-fetch_lyrics_for_current_song_in_background = no
-external_editor = vim
-use_console_editor = yes
-follow_now_playing_lyrics = yes
-lastfm_preferred_language = en
+#lyrics_directory = ~/.lyrics
+#store_lyrics_in_song_dir = no
+#generate_win32_compatible_filenames = yes
+#fetch_lyrics_for_current_song_in_background = no
+#external_editor = vim
+#use_console_editor = yes
+#follow_now_playing_lyrics = yes
+#lastfm_preferred_language = en
 
 
 # Colors definitions
