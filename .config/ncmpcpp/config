@@ -173,7 +173,7 @@ song_columns_list_format = (1f)[red]{} (40)[red]{t|f} (25)[yellow]{a} (25)[green
 #execute_on_song_change = "$HOME/.ncmpcpp/broadcast"
 
 #playlist_show_mpd_host = no
-playlist_show_remaining_time = no
+playlist_show_remaining_time = yes
 playlist_shorten_total_times = yes
 playlist_separate_albums = no
 
