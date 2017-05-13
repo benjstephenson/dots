@@ -86,6 +86,7 @@ for_window [window_role="pop-up"] floating enable,move absolute center
 for_window [class="Terminator" instance="terminator" title="Terminator Preferences"] floating enable,move absolute center
 for_window [class="Enpass-Desktop" instance="Enpass" title="Enpass"] floating,move absolute center
 for_window [class="Blueman-manager" instance="blueman-manager" title="Bluetooth Devices"] floating enable
+for_window [class="Pavucontrol" instance="pavucontrol" title="Volume Control"] floating enable, move absolute center
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -214,7 +215,8 @@ exec ~/bin/setBackground.sh
 exec --no-startup-id devmon
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
 exec xautolock -time 20 -locker ~/bin/lockscreen.sh
-
+#exec --no-startup-id xfce4-panel --disable-wm-check
 # Shortcuts
 bindsym $mod+Print exec scrot 'screenshot-%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'mv $f ~/pictures/'
