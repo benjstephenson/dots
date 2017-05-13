@@ -10,6 +10,7 @@
 /.local/lib/python2.7
 /.local/lib/python3.4
 /.local/var/*
+/.local/run/*
 !/.local/var/mpd
 
 # unclutter untracked
