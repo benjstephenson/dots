@@ -1,4 +1,4 @@
-/* VteTerminal, vte-terminal { */
-widget {
-  padding: 10 15;
+.window-frame {
+  box-shadow: none;
+  margin: 0;
 }
