@@ -31,31 +31,26 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     javascript
-      html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-      auto-completion
-      better-defaults
-      emacs-lisp
-      git
-      github
-      markdown
-      (scala :variables set-auto-start-ensime t)
+     auto-completion
+     better-defaults
+     emacs-lisp
+     (scala :variables scala-enable-eldoc t
+            )
+     git
+     ;; markdown
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-      syntax-checking
-      (version-control :variables
-                       version-control-global-margin t
-                       version-control-diff-tool 'diff-hl
-                       )
+     syntax-checking
+     version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -122,11 +117,10 @@ values."
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
-   ;; Example for 5 recent files and 7 projects: '((recents . 5) (projects . 7))
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   ;; (default nil)
-   dotspacemacs-startup-lists '()
+   dotspacemacs-startup-lists '((recents . 5)
+                                (projects . 7))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -135,15 +129,14 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(jbeans
-                         dracula
                          spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Hack"
-                               :size 12
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -161,7 +154,7 @@ values."
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m)
+   ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
@@ -256,8 +249,18 @@ values."
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
-   ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
-   ;; derivatives. If set to `relative', also turns on relative line numbers.
+   ;; Control line numbers activation.
+   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
+   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
+   ;; This variable can also be set to a property list for finer control:
+   ;; '(:relative nil
+   ;;   :disabled-for-modes dired-mode
+   ;;                       doc-view-mode
+   ;;                       markdown-mode
+   ;;                       org-mode
+   ;;                       pdf-view-mode
+   ;;                       text-mode
+   ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
@@ -300,7 +303,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-)
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -309,44 +312,14 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (add-hook 'scala-mode-hook
-            (lambda ()
-              (show-paren-mode)
-              (smartparens-mode)
-              (yas-minor-mode)
-              (company-mode)
-              (ensime-mode)
-              (scala-mode:goto-start-of-code)
-              (scala-indent:align-parameters nil)))
+  (setq-default fill-column 145)
+  (setq whitespace-line-column fill-column)
 
-  (setq create-lockfiles nil)
-  (setq tab-width 2)
-  (golden-ratio-mode 1)
-  (indent-guide-global-mode 1)
-  (global-highlight-parentheses-mode 1)
-  (global-auto-highlight-symbol-mode 1)
-  (global-prettify-symbols-mode 1)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-  ;(setq ensime-sem-high-faces
-  ;  '((var . scala-font-lock:var-face)
-  ;    (val :inherit font-lock-constant-face :slant italic)
-  ;    (varField . scala-font-lock:var-face)
-  ;    (valField :inherit font-lock-constant-face :slant italic)
-  ;    (functionCall . font-lock-function-name-face)
-  ;    (operator . font-lock-keyword-face)
-  ;    (param :slant italic)
-  ;    (class . font-lock-type-face)
-  ;    (trait :inherit font-lock-type-face :slant italic)
-  ;    (object . font-lock-constant-face)
-  ;    (package . font-lock-preprocessor-face)
-  ;    (implicitConversion . ensime-implicit-highlight)
-  ;    (implicitParams . ensime-implicit-highlight)
-  ;    (deprecated :strike-through "dark gray")
-  ;  )
-  ;)
-
-)
+  (setq flycheck-scalastyle-jar "$LOCAL_LIB/jar/scalastyle_2.11-0.8.0-batch.jar")
+  (setq flycheck-scalastylerc "/home/bste/.local/etc/scalastyle-config.xml")
+  (setq flycheck-check-syntax-automatically '(mode-enabled save idle-change))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -355,27 +328,14 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("5dc0ae2d193460de979a463b907b4b2c6d2c9c4657b2e9e66b8898d2592e3de5" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "45712b65018922c9173439d9b1b193cb406f725f14d02c8c33e0d2cdad844613" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "427fed191e7a766152e59ef0e2904283f436dbbe259b9ccc04989f3acde50a55" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
- '(ensime-auto-connect (quote ask))
- '(ensime-graphical-tooltips t)
- '(evil-want-Y-yank-to-eol nil)
- '(magit-commit-arguments (quote ("--verbose")))
- '(magit-diff-arguments
-   (quote
-    ("--function-context" "--no-ext-diff" "--stat" "-U")))
- '(magit-gh-pulls-arguments (quote ("--no-ff")))
- '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(package-selected-packages
    (quote
-    (material-theme jbeans-theme web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode hide-comnt magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flycheck-pos-tip pos-tip flycheck diff-hl solarized-theme dracula-theme feature-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rainbow-blocks noflet ensime sbt-mode scala-mode smeargle orgit org mwim mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
- '(scala-indent:align-forms t)
- '(scala-indent:align-parameters nil)
- '(scala-indent:default-run-on-strategy 2))
+    (git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-pos-tip pos-tip flycheck diff-hl unfill smeargle orgit mwim magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy evil-magit magit magit-popup git-commit with-editor company-statistics auto-yasnippet ac-ispell auto-complete noflet ensime company yasnippet sbt-mode scala-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ensime-implicit-highlight ((t nil))))
+ )

@@ -1,5 +1,5 @@
 function set-term-name {
-echo -e "\e]0;$1\a"
+  echo -e "\e]0;$1\a"
 }
 
 function unicode {

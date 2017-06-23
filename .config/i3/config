@@ -3,7 +3,7 @@
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
-set $terminal termite
+set $terminal terminator
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -35,7 +35,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 #bindsym $mod+d exec --no-startup-id dmenu_recency
-bindsym $mod+d exec rofi   -show run -terminal urxvtc -hide-scrollbar true  \
+bindsym $mod+d exec rofi   -show drun -terminal urxvtc -hide-scrollbar true  \
   -line-margin 0 -lines 20 -eh 1 -width 40 -bw 3 \
   -kb-mode-next      Alt+Tab \
   -kb-mode-previous  Alt+Control+Tab \
@@ -51,11 +51,12 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
+#exec --no-startup-id volumeicon
+#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+exec --no-startup-id pasystray
+bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
@@ -65,10 +66,10 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec $terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
-bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F2 exec chromium
+bindsym $mod+F3 exec nautilus
 # bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec gksu pcmanfm
+bindsym $mod+Shift+F3 exec gksu nautilus
 bindsym $mod+F5 exec $terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
@@ -106,9 +107,12 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
+bindsym $mod+Ctrl+Shift+Left move workspace to output left
+bindsym $mod+Ctrl+Shift+Right move workspace to output right
 
 # split orientation
 bindsym $mod+h split h;exec notify-send 'tile horizontally'
@@ -221,11 +225,11 @@ for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
 for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
+#for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-for_window [window_role="pop-up"] floating enable,move absolute center
-for_window [class="Terminator" instance="terminator" title="Terminator Preferences"] floating enable,move absolute center
-for_window [class="Enpass-Desktop" instance="Enpass" title="Enpass"] floating,move absolute center
+for_window [window_role="pop-up"] floating enable, move absolute center
+for_window [class="Terminator" instance="terminator" title="Terminator Preferences"] floating enable, move absolute center
+for_window [class="Enpass-Desktop" instance="Enpass" title="Enpass"] floating enable, move absolute center
 for_window [class="Blueman-manager" instance="blueman-manager" title="Bluetooth Devices"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol" title="Volume Control"] floating enable, move absolute center
 
@@ -295,9 +299,10 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
+#exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman
+exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
@@ -311,7 +316,7 @@ bar {
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
-#	tray_output eDP1
+	tray_output HDMI-1
 
 	bindsym button4 nop
 	bindsym button5 nop

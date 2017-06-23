@@ -7,3 +7,6 @@
 [submodule "/home/jaagr/.vimperator/colors"]
 	path = /home/jaagr/.vimperator/colors
 	url = https://github.com/vimpr/vimperator-colors
+[submodule "/home/bste/.emacs.d"]
+	path = /home/bste/.emacs.d
+	url = https://github.com/syl20bnr/spacemacs

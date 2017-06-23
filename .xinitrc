@@ -10,6 +10,13 @@ else
 	DEFAULT_SESSION=xfce4-session
 fi
 
+if [[ -d ${XDG_DATA_HOME+$HOME/.local/share/}fonts ]]; then
+
+	xset +fp $XDG_DATA_HOME/fonts
+	xset fp rehash
+
+fi
+
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
