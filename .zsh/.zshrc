@@ -27,5 +27,9 @@ if [[ "$ZSH_DEBUG" ]]; then
   exec 2>&3 3>&-
 fi
 
-
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/bste/.sdkman"
+[[ -s "/home/bste/.sdkman/bin/sdkman-init.sh" ]] && source "/home/bste/.sdkman/bin/sdkman-init.sh"
+#source "/home/bste/.sdkman/bin/sdkman-init.sh"
+export JAVA_HOME=$SDKMAN_CANDIDATES_DIR/java/current
 # vim:fdm=marker

@@ -23,11 +23,6 @@ command -v perl >/dev/null && [ -e "${PERL_HOME}/lib/perl5/local/lib.pm" ] && {
   eval "$(perl -I"${PERL_HOME}/lib/perl5" -Mlocal::lib="${PERL_HOME}")"
 }
 
-export GOPATH="${LOCAL_SRC}/go"
-
-export ARCH="x86_64"
-export ARCHFLAGS="-arch x86_64"
-
 export LANG="en_GB.UTF-8"
 export EDITOR="vim"
 export VISUAL="vim"
@@ -40,7 +35,6 @@ export GREP_COLORS="mt=30;43"
 
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 export WINEPREFIX="${XDG_DATA_HOME}/wine"
-export NO_AT_BRIDGE=1
 export QT_STYLE_OVERRIDE="GTK+"
 
 [ -r "${LOCAL_ETC}/xorg/xenvironment" ] && . "${LOCAL_ETC}/xorg/xenvironment"
@@ -77,4 +71,3 @@ export PATH="$PATH:/usr/local/sbin:/usr/local/bin"
 export MANPATH="$MANPATH:/usr/local/share/man:/usr/share/man"
 
 source $HOME/.contract/init.sh
-source "$HOME/.sdkman/bin/sdkman-init.sh"
