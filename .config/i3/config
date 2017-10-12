@@ -9,7 +9,7 @@ set $terminal terminator
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
+new_window pixel 3
 new_float normal
 
 # Hide borders
@@ -17,7 +17,7 @@ hide_edge_borders none
 
 # change borders
 bindsym $mod+u border none
-bindsym $mod+y border pixel 1
+bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -53,7 +53,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 #exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
+exec_always --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #exec_always --no-startup-id pasystray
 bindsym $mod+Ctrl+m exec pavucontrol
@@ -68,7 +68,6 @@ bindsym $mod+Ctrl+m exec pavucontrol
 bindsym $mod+Ctrl+b exec $terminal -e 'bmenu'
 bindsym $mod+F2 exec chromium
 bindsym $mod+F3 exec dolphin
-# bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu dolphin
 bindsym $mod+F5 exec $terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
@@ -295,20 +294,20 @@ bindsym $mod+9 exec --no-startup-id blurlock
 exec $LOCAL_BIN/setBackground.sh
 exec $LOCAL_BIN/setWorkMonitors.sh
 exec --no-startup-id unclutter -idle 2
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-#exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-#exec --no-startup-id blueman
-#exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id fix_xcursor
+
+# color defines for zenburn styled i3
+set $bg     #2c2c2e
+set $fg     #9f9f9f
+set $hi     #efef8f
+set $ac     #a0afa0
+set $tx     #040404
+set $ia     #8f8f8f
+set $be     #8faf9f
+set $yw     #ccdc90
+set $gn     #88b090
+set $rd     #e89393
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
@@ -316,8 +315,7 @@ bar {
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-	#tray_output primary
-	#tray_output DP-0
+	tray_output none
 
 	bindsym button4 nop
 	bindsym button5 nop
@@ -330,7 +328,7 @@ bar {
         statusline #F9FAF9
         separator  #454947
 
-#                                  border  backgr. text
+#                          border  backgr. text
         focused_workspace  #F9FAF9 #16A085 #2B2C2B
         active_workspace   #595B5B #353836 #FDF6E3
         inactive_workspace #595B5B #353836 #EEE8D5
@@ -342,12 +340,11 @@ bar {
 bindsym $mod+m bar mode toggle
 
 # Theme colors
-# class                 border  backgr. text    indic.  child_border
-client.focused          #808280 #808280 #80FFF9 #FDF6E3
-client.focused_inactive #434745 #434745 #16A085 #454948
-client.unfocused        #434745 #434745 #16A085 #454948
-client.urgent           #CB4B16 #FDF6E3 #16A085 #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+# set some nice colors      border     background  text
+client.focused              $ac        $ac         $tx
+client.unfocused            $bg        $bg         $ia
+client.focused_inactive     $bg        $bg         $ac
+client.urgent               $rd        $rd         $tx
 
 client.background       #2B2C2B
 

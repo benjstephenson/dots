@@ -1,3 +1,7 @@
+function basher {
+	docker exec -ti $1 /bin/bash
+}
+
 function set-term-name {
   echo -e "\e]0;$1\a"
 }

@@ -24,8 +24,8 @@ command -v perl >/dev/null && [ -e "${PERL_HOME}/lib/perl5/local/lib.pm" ] && {
 }
 
 export LANG="en_GB.UTF-8"
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 export PAGER="less"
 export PERLDOC_PAGER="more"
@@ -69,5 +69,7 @@ unset -f path_prepend
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin"
 export MANPATH="$MANPATH:/usr/local/share/man:/usr/share/man"
+export SSH_ASKPASS="/usr/bin/ksshaskpass"
+
 
 source $HOME/.contract/init.sh
