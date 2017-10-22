@@ -22,9 +22,9 @@
 	sbp = "!f() { git subtree push --prefix $1 $1 master; }; f"
 
 [default]
-	editor = vim
+	editor = nvim
 [core]
-	editor = vim
+	editor = nvim
 	autocrlf = false
 [push]
 	default = current
