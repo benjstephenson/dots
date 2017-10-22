@@ -28,7 +28,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'archive' \
   'git' \
-	'autosuggestions' \
+  'autosuggestions' \
   'syntax-highlighting' \
   'completion' \
   'fasd' \
@@ -96,7 +96,7 @@ zstyle ':prezto:module:git:log:oneline' format \
 # SSH
 
 # Set the SSH identities to load into the agent.
- zstyle ':prezto:module:ssh:load' identities 'id_rsa'
+# zstyle ':prezto:module:ssh:load' identities 'id_rsa'
 
 
 # Syntax Highlighting
