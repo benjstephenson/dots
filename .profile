@@ -37,6 +37,8 @@ export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 export WINEPREFIX="${XDG_DATA_HOME}/wine"
 export QT_STYLE_OVERRIDE="GTK+"
 
+export WORKSPACE="${HOME}/Repos"
+
 [ -r "${LOCAL_ETC}/xorg/xenvironment" ] && . "${LOCAL_ETC}/xorg/xenvironment"
 
 [ "$TERM" = "xterm" ] && {
@@ -69,7 +71,6 @@ unset -f path_prepend
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin"
 export MANPATH="$MANPATH:/usr/local/share/man:/usr/share/man"
-export SSH_ASKPASS="/usr/bin/ksshaskpass"
-
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 source $HOME/.contract/init.sh
