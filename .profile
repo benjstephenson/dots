@@ -39,6 +39,8 @@ export QT_STYLE_OVERRIDE="GTK+"
 
 export WORKSPACE="${HOME}/Repos"
 
+export KUBECONFIG="${XDG_CONFIG_HOME}/kube"
+
 [ -r "${LOCAL_ETC}/xorg/xenvironment" ] && . "${LOCAL_ETC}/xorg/xenvironment"
 
 [ "$TERM" = "xterm" ] && {

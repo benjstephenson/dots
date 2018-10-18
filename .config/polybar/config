@@ -1,431 +1,158 @@
-[colors]
-accent = #fba922
-
-[bar/top]
-enable-ipc = true
-monitor = ${env:MONITOR:eDP-1}
+[bar/i3wmthemer_bar]
 width = 100%
 height = 27
+radius = 0
+fixed-center = false
 
-;background = #222
-background = #1f1f1f
-foreground = #eee
+background = #2f2f38
+foreground = #b0c4bb
 
-border-bottom = 1
-border-bottom-color = #333
+line-size = 3
+line-color =
 
-overline-size = 10
-overline-color = ${self.background}
-underline-size = 3
-underline-color = ${self.background}
+border-size = 0
+border-color =
 
 padding-left = 0
-padding-right = 0
-module-margin-left = 3
-module-margin-right = 3
+padding-right = 2
 
-font-0 = NotoSans-Regular:size=12;0
-font-1 = MaterialIcons:size=10;2
-font-2 = Termsynu:size=12;0
-font-3 = "Wuncon Siji":pixelsize=12;1
-font-4 = FontAwesome:size=12;0
+module-margin-left = 1
+module-margin-right = 2
 
-modules-left = monitor i3 powermenu
-modules-center = xwindow
-modules-right = volume wireless-network wired-network battery clock
+font-0 = "Source Code Pro Semibold:size=10;1"
+font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
+font-2 = "Font Awesome 5 Brands:size=10;1"
 
-wm-restack = i3
+modules-left = wlan eth
+modules-center = i3
+modules-right = date powermenu
 
 tray-position = right
+;tray-padding =
 
-[bar/bottom]
-monitor = ${env:MONITOR:eDP-1}
-bottom = true
-width = 100%
-height = 27
-
-background = #1c1c1c
-foreground = #eefafafa
-
-overline-size = 3
-overline-color = ${colors.accent}
-underline-size = 3
-underline-color = ${colors.accent}
-
-;border-color = #ff0000
-border-top = 3
-border-top-color = #3d3d3d
-;border-bottom = 0
-;border-bottom-color = #333333
-
-spacing = 3
-;padding-right = 4
-padding-left = 0
-padding-right = 0
-module-margin-left = 0
-module-margin-right = 6
-
-font-0 = NotoSans-Regular:size=12;0
-font-1 = Unifont:size=12;0
-font-2 = FontAwesome:size=12;0
-font-3 = NotoSans-Regular:size=12;-1
-font-4 = Unifont:size=12;0
-font-5 = Termsynu:size=12;0
-
-modules-left = mpd
-;modules-center =
-modules-right = xbacklight cpu memory clock
-;modules-right = memory
-
-wm-restack = i3
-
-
-[bar/external]
-enable-ipc = true
-monitor = ${env:MONITOR:HDMI1}
-bottom = true
-;dock = true
-width = ${bar/bottom.width}
-height = ${bar/bottom.height}
-
-background = ${bar/bottom.background}
-foreground = ${bar/bottom.foreground}
-
-underline-size = ${bar/bottom.underline-size}
-underline-color = ${bar/bottom.underline-color}
-overline-size = ${bar/bottom.overline-size}
-overline-color = ${bar/bottom.overline-color}
-
-border-bottom.= ${bar/bottom.border-bottom}
-border-bottom.color = ${bar/bottom.border-bottom-color}
-
-spacing = ${bar/bottom.spacing}
-padding-left = ${bar/bottom.padding-left}
-padding-right = ${bar/bottom.padding-right}
-module-margin-left = 0
-module-margin-right = ${bar/bottom.module-margin-right}
-
-font-0 = ${bar/bottom.font-0}
-font-1 = ${bar/bottom.font-1}
-font-2 = ${bar/bottom.font-2}
-font-3 = ${bar/bottom.font-3}
-font-4 = ${bar/bottom.font-4}
-font-5 = ${bar/bottom.font-5}
-
-modules-left = bspwm i3
-modules-center = xwindow
-modules-right = fs-root clock
-
-wm-restack = ${bar/bottom.wm-restack}
-
-
-[module/fs-root]
-type = internal/fs
-mount-0 = /
-label-mounted = %{F#e60053}%percentage_used%%%{F-} used of %mountpoint%
-
-
-[module/xbacklight]
-type = internal/xbacklight
-output = ${env:MONITOR:eDP1}
-format = <ramp> <bar>
-
-ramp-0 = 
-ramp-0-foreground = #666
-ramp-1 = 
-ramp-1-foreground = #999
-ramp-2 = 
-ramp-2-foreground = #fff
-
-bar-width = 12
-bar-indicator = |
-bar-indicator-font = 6
-bar-indicator-foreground = #bbffffff
-bar-fill = ─
-bar-fill-font = 6
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 6
-bar-empty-foreground = #44
-
-
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
-format = <ramp> <label>
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = #666
-interactive = true
-
+cursor-click = pointer
+cursor-scroll = ns-resize
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
-pin-workspaces = true
+index-sort = true
+wrapping-scroll = false
 
-ws-icon-0 = 3;
-ws-icon-1 = 2;
-ws-icon-2 = 4;
-ws-icon-3 = 9;
-ws-icon-4 = 1;
-ws-icon-default = 
+label-mode-padding = 2
+label-mode-foreground = #34343e
+label-mode-background = #2f2f38
 
-label-dimmed-underline = ${root.background}
+label-focused = %index%
+label-focused-background = #688486
+label-focused-foreground = #2f2f38
+label-focused-padding = 2
 
-label-focused = %icon%  %name%
-label-focused-foreground = #f3f3f3
-label-focused-background = #3f3f3f
-;label-focused-underline = #${colors.accent}
-label-focused-underline = #9f78e1
-label-focused-font = 4
-label-focused-padding = 4
+label-unfocused = %index%
+label-unfocused-background = #81a2be
+label-unfocused-foreground = #2f2f38
+label-unfocused-padding = 2
 
-label-unfocused = %icon%  %name%
-label-unfocused-underline = #555555
-label-unfocused-font = 4
-label-unfocused-padding = 4
+label-visible = %index%
+label-visible-background = #81a2be
+label-visible-foreground = #2f2f38
+label-visible-padding = 2
 
-label-urgent = %icon%  %name%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-label-urgent-font = 4
-label-urgent-padding = 4
+label-urgent = %index%
+label-urgent-background = #BA2922
+label-urgent-padding = 2
 
-label-visible = %icon%  %name%
-label-visible-foreground = #55ffffff
-label-visible-font = 4
-label-visible-padding = 4
-
-
-[module/cpu]
-type = internal/cpu
-interval = 1.5
-
-format = <label> <ramp-coreload>
-
-label = CPU
-label-font = 3
-label-foreground = #99
-
-ramp-coreload-0 = ▁
-ramp-coreload-0-font = 2
-ramp-coreload-0-foreground = #aaff77
-ramp-coreload-1 = ▂
-ramp-coreload-1-font = 2
-ramp-coreload-1-foreground = #aaff77
-ramp-coreload-2 = ▃
-ramp-coreload-2-font = 2
-ramp-coreload-2-foreground = #aaff77
-ramp-coreload-3 = ▄
-ramp-coreload-3-font = 2
-ramp-coreload-3-foreground = #aaff77
-ramp-coreload-4 = ▅
-ramp-coreload-4-font = 2
-ramp-coreload-4-foreground = #fba922
-ramp-coreload-5 = ▆
-ramp-coreload-5-font = 2
-ramp-coreload-5-foreground = #fba922
-ramp-coreload-6 = ▇
-ramp-coreload-6-font = 2
-ramp-coreload-6-foreground = #ff5555
-ramp-coreload-7 = █
-ramp-coreload-7-font = 2
-ramp-coreload-7-foreground = #ff5555
-
-[module/memory]
-type = internal/memory
-interval = 0.2
-format = <label> <bar-used>
-
-label = RAM
-label-font = 3
-label-foreground = #99
-
-bar-used-width = 30
-bar-used-gradient = true
-bar-used-foreground-0 = #449f3d
-bar-used-foreground-1 = #2f8419
-bar-used-foreground-2 = #f5a70a
-bar-used-foreground-3 = #ed5456
-bar-used-indicator = █
-bar-used-indicator-font = 5
-bar-used-indicator-foreground = #fff
-bar-used-fill = █
-bar-used-fill-font = 5
-bar-used-empty = █
-bar-used-empty-font = 5
-bar-used-empty-foreground = #44
-
-[module/wireless-network]
+[module/wlan]
 type = internal/network
-interface = wlp2s0
-interval = 2.0
-ping-interval = 10
+;interface = net1
+interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
+format-connected-foreground = #2f2f38
+format-connected-background = #81a2be
+format-connected-padding = 2
 label-connected = %essid%
-label-disconnected =    not connected
-label-disconnected-foreground = #66
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+format-disconnected =
 
-animation-packetloss-0 = 
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
-animation-packetloss-framerate = 500
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = #2f2f38
 
-[module/wired-network]
+[module/eth]
 type = internal/network
-interface = net0
-interval = 2.0
+;interface = enp0s3
+interface = enp62s0u1u1
+interval = 3.0
 
-label-connected =   %local_ip%
-label-disconnected = Ethernet disconnected
-label-disconnected-foreground = #66
+format-connected-padding = 2
+format-connected-foreground = #2f2f38
+format-connected-background = #81a2be
+format-connected-prefix = " "
+format-connected-prefix-foreground = #2f2f38
+label-connected = %local_ip%
 
-[module/mpd]
-type = internal/mpd
-host = 127.0.0.1
-port = 6600
-interval = 2
+format-disconnected =
 
-format-online = <bar-progress>  <icon-prev> <icon-stop> <toggle> <icon-next>  <label-song>
-format-online-overline = ${root.background}
-format-online-underline = ${root.background}
-format-offline = <label-offline>
-; Available tokens:
-;   None
-label-offline = 🎜 mpd is offline
-
-; Only applies if <icon-X> is used
-icon-play = ⏵
-icon-pause = ⏸
-icon-stop = ⏹
-icon-prev = ⏮
-icon-next = ⏭
-icon-seekb = ⏪
-icon-seekf = ⏩
-icon-random = 🔀
-icon-repeat = 🔁
-icon-repeatone = 🔂
-
-toggle-on-foreground = #ff
-toggle-off-foreground = #55
-
-bar-progress-width = 45
-bar-progress-format = %{+o +u}%fill%%{-o -u}%indicator%%{+o +u}%empty%%{-u -o}
-; bar-progress-indicator = |
-bar-progress-indicator = █
-bar-progress-indicator-foreground = #ff
-bar-progress-indicator-font = 3
-; bar-progress-fill = ─
-bar-progress-fill = █
-bar-progress-fill-foreground = #bb
-bar-progress-fill-font = 3
-; bar-progress-empty = ─
-bar-progress-empty = ▒
-bar-progress-empty-font = 3
-bar-progress-empty-foreground = #44
-
-[module/clock]
+[module/date]
 type = internal/date
 interval = 5
-format-padding = 5
-format-background = #000
-format-foreground = #fff
-date = %%{F#bb}%Y-%m-%d%%{F-}  %%{F#ee}%H:%M%%{F-}
 
-[module/volume]
-type = internal/volume
-mapping = true
-master-soundcard = default
-headphone-soundcard = default
-headphone-mixer = Headphone
-headphone-id = 20
+date =
+date-alt = " %Y-%m-%d"
 
-format-volume = <ramp-volume> <label-volume>
+time = %H:%M
+time-alt = %H:%M:%S
 
-label-volume = volume %percentage%%
-label-volume-foreground = #ff
+format-prefix = 
+format-foreground = #2f2f38
+format-background = #81a2be
+format-padding = 2
 
-#format-muted-prefix = ""
-format-muted-foreground = #66
-label-muted = sound muted
-label-muted-foreground = #99ffffff
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
-ramp-volume-foreground = #9f78e1
-
-ramp-headphones-0 = 
-ramp-headphones-1 = 
-ramp-headphones-foreground = #9f78e1
-
-[module/battery]
-type = internal/battery
-full-at = 98
-format-charging = %{T3}Battery <label-charging> %{T-}
-format-discharging = %{T3}Battery <label-discharging> %{T-}
-;format-full = %{T3}Battery <label-full>
-label-charging-font = 3
-label-discharging-font = 3
-label-full =
-;label-full-font = 3
-
-[module/xwindow]
-type = internal/xwindow
-label-maxlen = 75
-label-foreground = #bbb
-
-[module/monitor]
-type = custom/script
-exec = echo ${MONITOR}
-
-label =  %output%
+label = %date% %time%
 
 [module/powermenu]
 type = custom/menu
 
-format-padding = 3
-format-background = #000
-format-foreground = #fff
+expand-right = true
 
-label-open = 
-label-close = 
-label-separator = " - "
+format-spacing = 1
 
-menu-0-0 = Terminate WM
-menu-0-0-foreground = ${colors.accent}
-menu-0-0-exec = bspc quit -1
-menu-0-1 = Reboot
-menu-0-1-foreground = ${colors.accent}
-menu-0-1-exec = menu-open-1
-menu-0-2 = Power off
-menu-0-2-foreground = ${colors.accent}
-menu-0-2-exec = menu-open-2
+label-open = 
+label-open-foreground = #81a2be
+label-close =  cancel
+label-close-foreground = #81a2be
+label-separator = |
+label-separator-foreground = #81a2be
 
-menu-1-0 = Cancel
-menu-1-0-foreground = ${colors.accent}
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = log off
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
-menu-1-1 = Reboot
-menu-1-1-foreground = ${colors.accent}
-menu-1-1-exec = sudo reboot
+menu-1-1 = reboot
+menu-1-1-exec = reboot
 
-menu-2-0 = Power off
-menu-2-0-foreground = ${colors.accent}
-menu-2-0-exec = sudo poweroff
-menu-2-1 = Cancel
-menu-2-1-foreground = ${colors.accent}
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-; vim:ft=dosini
+menu-3-0 = log off
+menu-3-0-exec = pkill -KILL -u $USER
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
